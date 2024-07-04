@@ -1,0 +1,3 @@
+# TODO: make this requirements.in, and requirements.txt in pip compile
+geopandas
+hdx-python-api

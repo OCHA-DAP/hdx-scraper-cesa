@@ -1,0 +1,22 @@
+# Collector specific configuration
+base_url: "https://api.petabencana.id/reports"
+# TODO: fix these
+dataset_maintainer: "35f7bb2c-4ab6-4796-8334-525b30a94c89"
+dataset_organization: "c021f6be-3598-418e-8f7f-c7a799194dba"
+dataset_expected_update_frequency: "Every day"
+#qc_indicators:
+#  - code: 'WHOSIS_000001'
+#    title: "Life Expectancy at Birth"
+#    unit: "Years"
+#    description: "Number of years of life expectancy at birth"
+#    aggregate_col: "#dimension+name"
+#  - code: 'MDG_0000000001'
+#    title: "Infant Mortality Rate"
+#    unit: "Percent"
+#    description: "Probability of dying between birth and age 1 per 1000 live births"
+#    aggregate_col: "#dimension+name"
+#  - code: 'WSH_SANITATION_BASIC'
+#    title: "Sanitation Services"
+#    unit: "Percent"
+#    description: "Percentage population using at least basic sanitation services"
+#    aggregate_col: "#dimension+name"
