@@ -4,6 +4,8 @@ base_url: "https://api.petabencana.id/reports"
 dataset_maintainer: "35f7bb2c-4ab6-4796-8334-525b30a94c89"
 dataset_organization: "c021f6be-3598-418e-8f7f-c7a799194dba"
 dataset_expected_update_frequency: "Every day"
+fixed_tags:
+  - affected people
 #qc_indicators:
 #  - code: 'WHOSIS_000001'
 #    title: "Life Expectancy at Birth"

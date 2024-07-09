@@ -49,15 +49,26 @@ def main(
                 use_saved=use_saved,
             )
             configuration = Configuration.read()
-            # TODO: quickcharts
+            # TODO: geopreview
 
             cesa = Cesa(
                 configuration=configuration,
                 retriever=retriever,
                 temp_dir=temp_dir,
             )
+            # TODO: split by country
             data_by_disaster_dict = cesa.scrape_data()
-            cesa.generate_dataset(data_by_disaster_dict=data_by_disaster_dict)
+            dataset = cesa.generate_dataset(
+                data_by_disaster_dict=data_by_disaster_dict
+            )
+            dataset.update_from_yaml()
+            dataset.create_in_hdx(
+                remove_additional_resources=True,
+                match_resource_order=False,
+                hxl_update=False,
+                updated_by_script="HDX Scraper: CESA",
+                batch=info["batch"],
+            )
 
 
 if __name__ == "__main__":
