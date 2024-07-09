@@ -1,0 +1,9 @@
+# TODO: Try and put this in .config
+# TODO: Fix this
+license_id: "hdx-other"
+license_other: "TBD"
+methodology: "Registry"
+caveats: "None"
+dataset_source: "Climate Emergency Software Alliance"
+package_creator: "HDX Data Systems Team"
+private: False  # has to be True or False

@@ -50,7 +50,6 @@ def main(
             )
             configuration = Configuration.read()
             # TODO: geopreview
-
             cesa = Cesa(
                 configuration=configuration,
                 retriever=retriever,
@@ -61,7 +60,8 @@ def main(
             dataset = cesa.generate_dataset(
                 data_by_disaster_dict=data_by_disaster_dict
             )
-            dataset.update_from_yaml()
+            dataset.update_from_yaml(path=".config/hdx_dataset_static.yaml")
+            logger.info("Uploading to HDX")
             dataset.create_in_hdx(
                 remove_additional_resources=True,
                 match_resource_order=False,

@@ -89,7 +89,7 @@ class Cesa:
         dataset = Dataset(
             {
                 "name": slugified_name,
-                "notes": "This dataset comes from the Climate Emergency Software Alliance",
+                "notes": self._configuration["dataset_notes"],
                 "title": title,
             }
         )
@@ -122,35 +122,39 @@ class Cesa:
             gdf = gpd.GeoDataFrame.from_features(data)
             # Filename base for geojson and shapefiles
             basename = f"{disaster_type}_reports_{country_iso3.lower()}"
+            resource_description = (
+                f"All current {disaster_type} reports for {country_name}"
+            )
             # Create resources
             resource_geojson = self._create_geojson_resource(
-                gdf=gdf, basename=basename
+                gdf=gdf,
+                basename=basename,
+                resource_description=resource_description,
             )
             dataset.add_update_resource(resource_geojson)
             resource_shapefile = self._create_shapefile_resource(
-                gdf=gdf, basename=basename
+                gdf=gdf,
+                basename=basename,
+                resource_description=resource_description,
             )
             dataset.add_update_resource(resource_shapefile)
         return dataset
 
     def _create_geojson_resource(
-        self, gdf: gpd.GeoDataFrame, basename: str
+        self, gdf: gpd.GeoDataFrame, basename: str, resource_description: str
     ) -> Resource:
         filename = f"{basename}.geojson"
         filepath = f"{self._temp_dir}/{filename}"
         gdf.to_file(filepath, driver="GeoJSON")
         resource = Resource(
-            {
-                "name": filename,
-                "description": "description",
-            }
+            {"name": filename, "description": resource_description}
         )
         resource.set_format("geojson")
         resource.set_file_to_upload(filepath)
         return resource
 
     def _create_shapefile_resource(
-        self, gdf: gpd.GeoDataFrame, basename: str
+        self, gdf: gpd.GeoDataFrame, basename: str, resource_description: str
     ) -> Resource:
         # There's a lot of file manipulation so using
         # Path to make it a bit easier
@@ -172,10 +176,7 @@ class Cesa:
             for file in files_to_zip:
                 zipf.write(file, file.name)
         resource = Resource(
-            {
-                "name": filename_zip,
-                "description": "description",
-            }
+            {"name": filename_zip, "description": resource_description}
         )
         resource.set_format("SHP")
         resource.set_file_to_upload(str(filepath_zip))
