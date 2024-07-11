@@ -79,6 +79,9 @@ class Cesa:
             data = self._retriever.download_json(
                 data_url_disaster, headers=self._REQUEST_HEADERS
             )["result"]
+            if not data["features"]:
+                logger.info(f"No data for {disaster_type}")
+                continue
             logger.info(
                 f"Found {len(data['features'])} rows for {disaster_type}"
             )
@@ -130,14 +133,12 @@ class Cesa:
             logger.error(f"Couldn't find country {country_iso3}, skipping")
             return
 
-        # Loop through disasters and generate resource for each
-        for disaster_type in self._DISASTER_TYPE:
+        # Loop through disasters found in dictionary and make report for each.
+        # Presumably HDX will remove the resources for non-existent disasters.
+        for disaster_type, data in country_data_by_disaster_dict.items():
             logger.info(f"Disaster type: {disaster_type}")
             data = country_data_by_disaster_dict.get(disaster_type)
-            # Sometimes there is no data for a particular disaster type
-            if not data:
-                logger.info("No data")
-                continue
+
             # Create pandas dataframe from the data
             gdf = gpd.GeoDataFrame.from_features(data)
             # Filename base for geojson and shapefiles
