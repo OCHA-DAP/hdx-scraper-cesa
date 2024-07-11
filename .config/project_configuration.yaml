@@ -1,11 +1,11 @@
 # Collector specific configuration
 base_url: "https://api.petabencana.id/reports"
-# TODO: fix these
 dataset_maintainer: "b682f6f7-cd7e-4bd4-8aa7-f74138dc6313" # Beryl
 dataset_organization: "a624903e-ff7c-4694-91c1-ef1ec0e0c692" # CESA
 dataset_expected_update_frequency: "Every day"
 dataset_notes: >
-  PetaBencana.id is a free and transparent platform for emergency response and
+  PetaBencana.id by the Climate Emergency Software Alliance (CESA)
+  is a free and transparent platform for emergency response and
   disaster management in megacities in South and Southeast Asia. The platform
   harnesses the heightened use of social media during emergency events to
   gather, sort, and display confirmed hazard information in real-time.
@@ -20,23 +20,5 @@ dataset_notes: >
   CogniCity Open Source Software, to transform the noise of social and digital
   media into critical information for residents, communities, and government
   agencies.
-
-  The data below comes from the crowdsourced reports from the past week.
 fixed_tags:
   - affected people
-#qc_indicators:
-#  - code: 'WHOSIS_000001'
-#    title: "Life Expectancy at Birth"
-#    unit: "Years"
-#    description: "Number of years of life expectancy at birth"
-#    aggregate_col: "#dimension+name"
-#  - code: 'MDG_0000000001'
-#    title: "Infant Mortality Rate"
-#    unit: "Percent"
-#    description: "Probability of dying between birth and age 1 per 1000 live births"
-#    aggregate_col: "#dimension+name"
-#  - code: 'WSH_SANITATION_BASIC'
-#    title: "Sanitation Services"
-#    unit: "Percent"
-#    description: "Percentage population using at least basic sanitation services"
-#    aggregate_col: "#dimension+name"

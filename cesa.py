@@ -9,6 +9,7 @@ Reads WHO API and creates datasets
 
 import logging
 import zipfile
+from copy import deepcopy
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import List, Optional
@@ -21,6 +22,7 @@ from hdx.data.dataset import Dataset
 from hdx.data.hdxobject import HDXError
 from hdx.data.resource import Resource
 from hdx.data.vocabulary import Vocabulary
+from hdx.location.country import Country
 from hdx.utilities.retriever import Retrieve
 
 logger = logging.getLogger(__name__)
@@ -33,7 +35,7 @@ class Cesa:
     _TIMEPERIOD = 604800
     _OUTPUT_FORMAT = "geojson"
     # CESA asks that we provide a user agent
-    _REQUEST_HEADERS = {"User-Agent": "hdx-python-cesa"}
+    _REQUEST_HEADERS = {"User-Agent": "hdx-scraper-cesa"}
 
     def __init__(
         self, configuration: Configuration, retriever: Retrieve, temp_dir: str
@@ -51,6 +53,20 @@ class Cesa:
         return tags
 
     def scrape_data(self) -> dict:
+        """
+        Query the API by disaster, and store the results in a dictionary.
+
+        The result for a single disaster will have the following format:
+        {
+        "type": "FeatureCollection",
+        "features": [
+              { report 1 }
+              { report 2 }
+              etc.
+            ]
+        }
+        We maintain the format because it can be converted to a GeoDataFrame by GeoPandas.
+        """
         logger.info("Scraping data")
         data_url = (
             f"{self._configuration['base_url']}/"
@@ -71,13 +87,18 @@ class Cesa:
         return data_by_disaster_dict
 
     def generate_dataset(
-        self, data_by_disaster_dict: dict
+        self, country_data_by_disaster_dict: dict, country_iso2: str
     ) -> Optional[Dataset]:
+        """
+        Generate the dataset, using a GeoJSON formatted result from the API, that
+        has been pre-filtered for the country in question.
+        """
         # Setup the dataset information
         # TODO: handle other countries
-        country_name = "Indonesia"
-        country_iso3 = "IDN"
-        title = f"CESA Disaster Reports for {country_name}"
+        country_iso3 = Country.get_iso3_from_iso2(country_iso2)
+        country_name = Country.get_country_name_from_iso2(country_iso2)
+
+        title = f"{country_name}: CESA Disaster Reports"
         slugified_name = slugify(
             f"CESA Disaster Reports for {country_iso3}"
         ).lower()
@@ -85,7 +106,6 @@ class Cesa:
         logger.info(f"Creating dataset: {title}")
 
         # Get unique category names
-        # TODO: Fix all this, also in config
         dataset = Dataset(
             {
                 "name": slugified_name,
@@ -113,7 +133,7 @@ class Cesa:
         # Loop through disasters and generate resource for each
         for disaster_type in self._DISASTER_TYPE:
             logger.info(f"Disaster type: {disaster_type}")
-            data = data_by_disaster_dict.get(disaster_type)
+            data = country_data_by_disaster_dict.get(disaster_type)
             # Sometimes there is no data for a particular disaster type
             if not data:
                 logger.info("No data")
@@ -181,6 +201,49 @@ class Cesa:
         resource.set_format("SHP")
         resource.set_file_to_upload(str(filepath_zip))
         return resource
+
+
+def get_list_of_country_iso2s(data_by_disaster_dict: dict) -> set:
+    """Unfortunately the API does not have an endpoint to tell us
+    which countries are available. However the data is quite small
+    so we just loop through and check what the countries are."""
+    country_iso2s = set()
+    for data in data_by_disaster_dict.values():
+        for row in data["features"]:
+            try:
+                country_iso2 = row["properties"]["tags"][
+                    "instance_region_code"
+                ][:2]
+            # Sometimes the instance_region_code is None
+            except TypeError:
+                logger.warning(f"No country info for row: {row}")
+                continue
+            country_iso2s.add(country_iso2)
+    return country_iso2s
+
+
+def filter_country(data_by_disaster_dict: dict, country_iso2: str) -> dict:
+    """It is not possible to filter by country in the API. This function
+    filters the GeoJSON formatted results for the desired country."""
+    country_data_by_disaster_dict = dict()
+    for disaster_type, data in data_by_disaster_dict.items():
+        # Filter just the features part
+        filtered_features = [
+            feature
+            for feature in data["features"]
+            if feature["properties"]["tags"]["instance_region_code"]
+            is not None
+            and feature["properties"]["tags"][
+                "instance_region_code"
+            ].startswith(country_iso2)
+        ]
+        # Put a copy of the original dictionary in the new one,
+        # and then replace the features with the filtered ones
+        country_data_by_disaster_dict[disaster_type] = deepcopy(data)
+        country_data_by_disaster_dict[disaster_type]["features"] = (
+            filtered_features
+        )
+    return country_data_by_disaster_dict
 
 
 def _flatten_dict(d: dict) -> dict:

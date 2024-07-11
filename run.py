@@ -8,7 +8,7 @@ script then creates in HDX.
 import logging
 from os.path import expanduser, join
 
-from cesa import Cesa
+from cesa import Cesa, filter_country, get_list_of_country_iso2s
 
 from hdx.api.configuration import Configuration
 from hdx.facades.infer_arguments import facade
@@ -49,26 +49,37 @@ def main(
                 use_saved=use_saved,
             )
             configuration = Configuration.read()
-            # TODO: geopreview
             cesa = Cesa(
                 configuration=configuration,
                 retriever=retriever,
                 temp_dir=temp_dir,
             )
-            # TODO: split by country
             data_by_disaster_dict = cesa.scrape_data()
-            dataset = cesa.generate_dataset(
+            country_iso2s = get_list_of_country_iso2s(
                 data_by_disaster_dict=data_by_disaster_dict
             )
-            dataset.update_from_yaml(path=".config/hdx_dataset_static.yaml")
-            logger.info("Uploading to HDX")
-            dataset.create_in_hdx(
-                remove_additional_resources=True,
-                match_resource_order=False,
-                hxl_update=False,
-                updated_by_script="HDX Scraper: CESA",
-                batch=info["batch"],
-            )
+            logger.info(f"Countries found: {country_iso2s}")
+            for country_iso2 in country_iso2s:
+                logger.info(f"Creating dataset for {country_iso2}")
+                country_data_by_disaster_dict = filter_country(
+                    data_by_disaster_dict=data_by_disaster_dict,
+                    country_iso2=country_iso2,
+                )
+                dataset = cesa.generate_dataset(
+                    country_data_by_disaster_dict=country_data_by_disaster_dict,
+                    country_iso2=country_iso2,
+                )
+                dataset.update_from_yaml(
+                    path=".config/hdx_dataset_static.yaml"
+                )
+                logger.info("Uploading to HDX")
+                dataset.create_in_hdx(
+                    remove_additional_resources=True,
+                    match_resource_order=False,
+                    hxl_update=False,
+                    updated_by_script="HDX Scraper: CESA",
+                    batch=info["batch"],
+                )
 
 
 if __name__ == "__main__":
