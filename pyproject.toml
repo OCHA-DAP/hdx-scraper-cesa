@@ -1,0 +1,49 @@
+#########################
+# Project Configuration #
+#########################
+
+# Project name and version needed to run tests
+
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hdx-scraper-cesa"
+dynamic = ["version"]
+
+dependencies = [
+  "geopandas",
+  "hdx-python-api",
+  "hdx-python-utilities",
+  "hdx-python-country"
+]
+
+# Dynamic versioning using hatch-vcs
+[tool.hatch.version]
+source = "vcs"
+
+# Tests
+
+[tool.hatch.envs.test]
+dependencies = ["pytest", "pytest-cov"]
+
+[tool.hatch.envs.test.scripts]
+test = """
+       pytest -c .config/pytest.ini --rootdir=. --junitxml=test-results.xml \
+       --cov --cov-config=.config/coveragerc --no-cov-on-fail \
+       --cov-report=lcov --cov-report=term-missing
+       """
+
+[[tool.hatch.envs.test.matrix]]
+python = ["3.12"]
+
+[tool.hatch.envs.lint]
+detached = true
+dependencies = ["ruff"]
+
+[tool.hatch.envs.lint.scripts]
+style = [
+  "ruff check --config .config/ruff.toml --diff {args:.}",
+  "ruff format --config .config/ruff.toml --diff {args:.}",
+]
