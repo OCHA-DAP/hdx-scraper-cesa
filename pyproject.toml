@@ -53,3 +53,7 @@ style = [
   "ruff check --config .config/ruff.toml --diff {args:.}",
   "ruff format --config .config/ruff.toml --diff {args:.}",
 ]
+
+# Needed for test build
+[tool.hatch.build.targets.wheel]
+include = ["cesa.py"]
