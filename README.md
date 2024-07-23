@@ -30,6 +30,8 @@ For the script to run, you will need to have a file called
 
 ## Development
 
+### Pre-commit
+
 Be sure to install `pre-commit`, which is run every time
 you make a git commit:
 
@@ -52,3 +54,29 @@ With pre-commit, all code is formatted according to
 To check if your changes pass pre-commit without committing, run:
 
     pre-commit run --all-files --config=.config/pre-commit-config.yaml
+
+## Testing
+
+Ensure you have the required packages to run the tests:
+
+    pip install -r requirements-test.txt
+
+To run the tests and view coverage, execute:
+
+    pytest -c .config/pytest.ini --cov hdx --cov-config .config/coveragerc
+
+## Packages
+
+[pip-tools](https://github.com/jazzband/pip-tools) is used for
+package management.  If you’ve introduced a new package to the
+source code please add it to the `dependencies` section of
+`pyproject.toml` with any known version constraints.
+
+For adding packages for testing, add them to
+the `test` sections under `[project.optional-dependencies]`.
+
+Any changes to the dependencies will be automatically reflected in
+`requirements.txt` and `requirements-test.txt` with `pre-commit`,
+but you can re-generate the file without committing by executing:
+
+    pre-commit run pip-compile --all-files --config=.config/pre-commit-config.yaml

@@ -19,6 +19,12 @@ dependencies = [
   "hdx-python-country"
 ]
 
+[project.optional-dependencies]
+test = [
+  "pytest",
+  "pytest-cov"
+]
+
 # Dynamic versioning using hatch-vcs
 [tool.hatch.version]
 source = "vcs"
@@ -26,7 +32,7 @@ source = "vcs"
 # Tests
 
 [tool.hatch.envs.test]
-dependencies = ["pytest", "pytest-cov"]
+dependencies = ["hdx-scraper-cesa[test]"]
 
 [tool.hatch.envs.test.scripts]
 test = """
