@@ -1,0 +1,673 @@
+{
+  "statusCode": 200,
+  "result": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            123.058733278,
+            0.5374648896
+          ]
+        },
+        "properties": {
+          "pkey": "356180",
+          "created_at": "2024-07-11T11:20:29.812Z",
+          "source": "grasp",
+          "status": "confirmed",
+          "url": "27520539-16cf-452e-8c3c-d2bc734d9b00",
+          "image_url": "https://images.petabencana.id/27520539-16cf-452e-8c3c-d2bc734d9b00.jpg",
+          "disaster_type": "flood",
+          "is_training": false,
+          "report_data": {
+            "report_type": "flood",
+            "flood_depth": 44
+          },
+          "tags": {
+            "city": "KOTA GORONTALO",
+            "district_id": null,
+            "region_code": "7571",
+            "local_area_id": null,
+            "instance_region_code": "ID-GO"
+          },
+          "title": null,
+          "text": "Tempat pusat perdangangan di Gorontalo masih terendam banjir pada 11 Juli 2024",
+          "partner_code": null,
+          "partner_icon": null
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            123.0562484444,
+            0.5351052319
+          ]
+        },
+        "properties": {
+          "pkey": "356179",
+          "created_at": "2024-07-11T11:18:30.431Z",
+          "source": "grasp",
+          "status": "confirmed",
+          "url": "08e787b5-4fcd-4cab-8818-e818f8945dbf",
+          "image_url": "https://images.petabencana.id/08e787b5-4fcd-4cab-8818-e818f8945dbf.jpg",
+          "disaster_type": "flood",
+          "is_training": false,
+          "report_data": {
+            "report_type": "flood",
+            "flood_depth": 44
+          },
+          "tags": {
+            "city": "KOTA GORONTALO",
+            "district_id": null,
+            "region_code": "7571",
+            "local_area_id": null,
+            "instance_region_code": "ID-GO"
+          },
+          "title": null,
+          "text": "Banjir sekitar pasar biawu, Gorontalo",
+          "partner_code": null,
+          "partner_icon": null
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            123.0581864154,
+            0.5337557607
+          ]
+        },
+        "properties": {
+          "pkey": "356178",
+          "created_at": "2024-07-11T11:15:48.412Z",
+          "source": "grasp",
+          "status": "confirmed",
+          "url": "dcc3d688-9d37-4ce3-b3ea-a0ec2aa9abd9",
+          "image_url": "https://images.petabencana.id/dcc3d688-9d37-4ce3-b3ea-a0ec2aa9abd9.jpg",
+          "disaster_type": "flood",
+          "is_training": false,
+          "report_data": {
+            "report_type": "flood",
+            "flood_depth": 40
+          },
+          "tags": {
+            "city": "KOTA GORONTALO",
+            "district_id": null,
+            "region_code": "7571",
+            "local_area_id": null,
+            "instance_region_code": "ID-GO"
+          },
+          "title": null,
+          "text": "Banjir di depan Informa Gorontalo, Jl. S Parman",
+          "partner_code": null,
+          "partner_icon": null
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            123.0585545864,
+            0.536450517
+          ]
+        },
+        "properties": {
+          "pkey": "356177",
+          "created_at": "2024-07-11T11:14:21.426Z",
+          "source": "grasp",
+          "status": "confirmed",
+          "url": "486ba05b-8114-4dd9-9fea-19988a58a643",
+          "image_url": "https://images.petabencana.id/486ba05b-8114-4dd9-9fea-19988a58a643.jpg",
+          "disaster_type": "flood",
+          "is_training": false,
+          "report_data": {
+            "report_type": "flood",
+            "flood_depth": 40
+          },
+          "tags": {
+            "city": "KOTA GORONTALO",
+            "district_id": null,
+            "region_code": "7571",
+            "local_area_id": null,
+            "instance_region_code": "ID-GO"
+          },
+          "title": null,
+          "text": "Banjir di sekitar Karsa Utama, Gorontalo",
+          "partner_code": null,
+          "partner_icon": null
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            106.8273999917,
+            -6.1751803237
+          ]
+        },
+        "properties": {
+          "pkey": "356176",
+          "created_at": "2024-07-11T11:13:22.999Z",
+          "source": "grasp",
+          "status": "confirmed",
+          "url": "93bf0a06-9e89-4650-8688-e3f32a435cf2",
+          "image_url": "https://images.petabencana.id/93bf0a06-9e89-4650-8688-e3f32a435cf2.jpg",
+          "disaster_type": "flood",
+          "is_training": true,
+          "report_data": {
+            "report_type": "flood",
+            "flood_depth": 196
+          },
+          "tags": {
+            "city": "JAKARTA PUSAT",
+            "district_id": null,
+            "region_code": "3171",
+            "local_area_id": "11017",
+            "instance_region_code": "ID-JK"
+          },
+          "title": null,
+          "text": "Retest Muhammad Ridha Akhsanu Sujiono",
+          "partner_code": null,
+          "partner_icon": null
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            110.3829536186,
+            -7.7736351109
+          ]
+        },
+        "properties": {
+          "pkey": "356175",
+          "created_at": "2024-07-11T06:46:37.035Z",
+          "source": "grasp",
+          "status": "confirmed",
+          "url": "569c6ae4-7801-404e-a271-e07d4388b409",
+          "image_url": null,
+          "disaster_type": "flood",
+          "is_training": true,
+          "report_data": {
+            "report_type": "flood",
+            "flood_depth": 31
+          },
+          "tags": {
+            "city": "SLEMAN",
+            "district_id": null,
+            "region_code": "3404",
+            "local_area_id": null,
+            "instance_region_code": "ID-YO"
+          },
+          "title": null,
+          "text": "Retest Muhamad Irfan Nurdiansyah",
+          "partner_code": null,
+          "partner_icon": null
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            110.4681824795,
+            -7.0243769556
+          ]
+        },
+        "properties": {
+          "pkey": "356174",
+          "created_at": "2024-07-11T02:13:53.911Z",
+          "source": "grasp",
+          "status": "confirmed",
+          "url": "62035b16-b54c-4c1e-abea-1119ef05a90b",
+          "image_url": null,
+          "disaster_type": "flood",
+          "is_training": true,
+          "report_data": {
+            "report_type": "flood",
+            "flood_depth": 34
+          },
+          "tags": {
+            "city": "KOTA SEMARANG",
+            "district_id": null,
+            "region_code": "3374",
+            "local_area_id": null,
+            "instance_region_code": "ID-JT"
+          },
+          "title": null,
+          "text": "Retest Aditya Putra Kejora",
+          "partner_code": null,
+          "partner_icon": null
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            119.8440211609,
+            -9.4081798476
+          ]
+        },
+        "properties": {
+          "pkey": "356172",
+          "created_at": "2024-07-10T20:55:52.234Z",
+          "source": "grasp",
+          "status": "confirmed",
+          "url": "12994807-6eb2-44c2-8828-59a7bbca26f0",
+          "image_url": "https://images.petabencana.id/12994807-6eb2-44c2-8828-59a7bbca26f0.jpg",
+          "disaster_type": "flood",
+          "is_training": true,
+          "report_data": {
+            "report_type": "flood",
+            "flood_depth": 53
+          },
+          "tags": {
+            "city": "SUMBA TENGAH",
+            "district_id": null,
+            "region_code": "5317",
+            "local_area_id": null,
+            "instance_region_code": "ID-NT"
+          },
+          "title": null,
+          "text": "RETEST_SUKAEDAH DEWI MAYUMI",
+          "partner_code": null,
+          "partner_icon": null
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            121.1689697943,
+            -8.7720788859
+          ]
+        },
+        "properties": {
+          "pkey": "356168",
+          "created_at": "2024-07-07T04:18:41.006Z",
+          "source": "grasp",
+          "status": "confirmed",
+          "url": "8915b34b-7fdd-4f22-a48c-694c201aad7c",
+          "image_url": "https://images.petabencana.id/8915b34b-7fdd-4f22-a48c-694c201aad7c.jpg",
+          "disaster_type": "flood",
+          "is_training": true,
+          "report_data": {
+            "report_type": "flood",
+            "flood_depth": 55
+          },
+          "tags": {
+            "city": "NAGEKEO",
+            "district_id": null,
+            "region_code": "5316",
+            "local_area_id": null,
+            "instance_region_code": "ID-NT"
+          },
+          "title": null,
+          "text": "Banjir 55 cm\n\n#HKB Marsel mau",
+          "partner_code": null,
+          "partner_icon": null
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            106.9868854823,
+            -6.2729045263
+          ]
+        },
+        "properties": {
+          "pkey": "356167",
+          "created_at": "2024-07-06T07:24:18.768Z",
+          "source": "grasp",
+          "status": "confirmed",
+          "url": "5707598a-5c40-4f5a-bf66-0a134be975b4",
+          "image_url": "https://images.petabencana.id/5707598a-5c40-4f5a-bf66-0a134be975b4.jpg",
+          "disaster_type": "flood",
+          "is_training": false,
+          "report_data": {
+            "report_type": "flood",
+            "flood_depth": 33
+          },
+          "tags": {
+            "city": "KOTA BEKASI",
+            "district_id": null,
+            "region_code": "3275",
+            "local_area_id": null,
+            "instance_region_code": "ID-JB"
+          },
+          "title": null,
+          "text": "Hujan deres langsung banjir ",
+          "partner_code": null,
+          "partner_icon": null
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            100.9897170898,
+            1.4842096734
+          ]
+        },
+        "properties": {
+          "pkey": "356165",
+          "created_at": "2024-07-06T06:39:16.471Z",
+          "source": "grasp",
+          "status": "confirmed",
+          "url": "39bc08f7-14ae-422b-a680-bfd44fa5a066",
+          "image_url": "https://images.petabencana.id/39bc08f7-14ae-422b-a680-bfd44fa5a066.jpg",
+          "disaster_type": "flood",
+          "is_training": true,
+          "report_data": {
+            "report_type": "flood",
+            "flood_depth": 29
+          },
+          "tags": {
+            "city": "ROKAN HILIR",
+            "district_id": null,
+            "region_code": "1407",
+            "local_area_id": null,
+            "instance_region_code": "ID-RI"
+          },
+          "title": null,
+          "text": "Retest Devita Trimaily",
+          "partner_code": null,
+          "partner_icon": null
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            100.807639866,
+            2.161959063
+          ]
+        },
+        "properties": {
+          "pkey": "356164",
+          "created_at": "2024-07-06T06:31:05.972Z",
+          "source": "grasp",
+          "status": "confirmed",
+          "url": "34d865b4-cab6-4aba-b3c4-1c3da33863d8",
+          "image_url": null,
+          "disaster_type": "flood",
+          "is_training": true,
+          "report_data": {
+            "report_type": "flood",
+            "flood_depth": 24
+          },
+          "tags": {
+            "city": "ROKAN HILIR",
+            "district_id": null,
+            "region_code": "1407",
+            "local_area_id": null,
+            "instance_region_code": "ID-RI"
+          },
+          "title": null,
+          "text": "Jalan rusak pascabencana banjir",
+          "partner_code": null,
+          "partner_icon": null
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            107.0415303248,
+            -6.250997133
+          ]
+        },
+        "properties": {
+          "pkey": "356163",
+          "created_at": "2024-07-06T06:18:53.017Z",
+          "source": "grasp",
+          "status": "confirmed",
+          "url": "712f03e1-5f29-41ca-a469-e0f68db2793e",
+          "image_url": "https://images.petabencana.id/712f03e1-5f29-41ca-a469-e0f68db2793e.jpg",
+          "disaster_type": "flood",
+          "is_training": false,
+          "report_data": {
+            "report_type": "flood",
+            "flood_depth": 29
+          },
+          "tags": {
+            "city": "BEKASI",
+            "district_id": null,
+            "region_code": "3216",
+            "local_area_id": null,
+            "instance_region_code": "ID-JB"
+          },
+          "title": null,
+          "text": "Hujan deras mulai banjir di pertigaan INDROPORLEN",
+          "partner_code": null,
+          "partner_icon": null
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            106.8292936713,
+            -6.1743698682
+          ]
+        },
+        "properties": {
+          "pkey": "356162",
+          "created_at": "2024-07-05T13:32:27.742Z",
+          "source": "grasp",
+          "status": "confirmed",
+          "url": "41e8eaa4-e67d-4916-a248-64ba66cf5c31",
+          "image_url": "https://images.petabencana.id/41e8eaa4-e67d-4916-a248-64ba66cf5c31.jpg",
+          "disaster_type": "flood",
+          "is_training": true,
+          "report_data": {
+            "report_type": "flood",
+            "flood_depth": 199
+          },
+          "tags": {
+            "city": "JAKARTA PUSAT",
+            "district_id": null,
+            "region_code": "3171",
+            "local_area_id": "11017",
+            "instance_region_code": "ID-JK"
+          },
+          "title": null,
+          "text": "Simulasi aja gengs",
+          "partner_code": null,
+          "partner_icon": null
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            110.374788552,
+            -7.0195447515
+          ]
+        },
+        "properties": {
+          "pkey": "356161",
+          "created_at": "2024-07-05T13:29:28.506Z",
+          "source": "grasp",
+          "status": "confirmed",
+          "url": "030bd124-faaf-4e8c-afad-4e4adff3f2d3",
+          "image_url": null,
+          "disaster_type": "flood",
+          "is_training": true,
+          "report_data": {
+            "report_type": "flood",
+            "flood_depth": 88
+          },
+          "tags": {
+            "city": "KOTA SEMARANG",
+            "district_id": null,
+            "region_code": "3374",
+            "local_area_id": null,
+            "instance_region_code": "ID-JT"
+          },
+          "title": null,
+          "text": "HKB SUPARNO",
+          "partner_code": null,
+          "partner_icon": null
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            110.3399341702,
+            -6.9973774608
+          ]
+        },
+        "properties": {
+          "pkey": "356160",
+          "created_at": "2024-07-05T13:29:26.473Z",
+          "source": "grasp",
+          "status": "confirmed",
+          "url": "838dfccc-da37-41ef-bd37-d8af64d5296c",
+          "image_url": null,
+          "disaster_type": "flood",
+          "is_training": true,
+          "report_data": {
+            "report_type": "flood",
+            "flood_depth": 12
+          },
+          "tags": {
+            "city": "KOTA SEMARANG",
+            "district_id": null,
+            "region_code": "3374",
+            "local_area_id": null,
+            "instance_region_code": "ID-JT"
+          },
+          "title": null,
+          "text": "HKB SUPARNO",
+          "partner_code": null,
+          "partner_icon": null
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            106.8258576265,
+            -6.1755859807
+          ]
+        },
+        "properties": {
+          "pkey": "356159",
+          "created_at": "2024-07-05T13:29:23.734Z",
+          "source": "grasp",
+          "status": "confirmed",
+          "url": "2626ff8d-96f7-430c-a094-89d825dbc2e3",
+          "image_url": null,
+          "disaster_type": "flood",
+          "is_training": true,
+          "report_data": {
+            "report_type": "flood",
+            "flood_depth": 188
+          },
+          "tags": {
+            "city": "JAKARTA PUSAT",
+            "district_id": null,
+            "region_code": "3171",
+            "local_area_id": "11017",
+            "instance_region_code": "ID-JK"
+          },
+          "title": null,
+          "text": "HKB SUPARNO",
+          "partner_code": null,
+          "partner_icon": null
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            110.3321917582,
+            -6.996851039
+          ]
+        },
+        "properties": {
+          "pkey": "356158",
+          "created_at": "2024-07-05T13:29:21.465Z",
+          "source": "grasp",
+          "status": "confirmed",
+          "url": "e66a429a-8e4c-45b2-90dd-3cfb1a512b06",
+          "image_url": null,
+          "disaster_type": "flood",
+          "is_training": true,
+          "report_data": {
+            "report_type": "flood",
+            "flood_depth": 79
+          },
+          "tags": {
+            "city": "KOTA SEMARANG",
+            "district_id": null,
+            "region_code": "3374",
+            "local_area_id": null,
+            "instance_region_code": "ID-JT"
+          },
+          "title": null,
+          "text": "HKB SUPARNO",
+          "partner_code": null,
+          "partner_icon": null
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            121.1688526763,
+            -8.772756836
+          ]
+        },
+        "properties": {
+          "pkey": "356157",
+          "created_at": "2024-07-05T05:38:27.877Z",
+          "source": "grasp",
+          "status": "confirmed",
+          "url": "0c1df41d-5680-4111-b132-c9535512bd92",
+          "image_url": "https://images.petabencana.id/0c1df41d-5680-4111-b132-c9535512bd92.jpg",
+          "disaster_type": "flood",
+          "is_training": true,
+          "report_data": {
+            "report_type": "flood",
+            "flood_depth": 84
+          },
+          "tags": {
+            "city": "NAGEKEO",
+            "district_id": null,
+            "region_code": "5316",
+            "local_area_id": null,
+            "instance_region_code": "ID-NT"
+          },
+          "title": null,
+          "text": "Banjir setinggi 50cm\n",
+          "partner_code": null,
+          "partner_icon": null
+        }
+      }
+    ]
+  }
+}

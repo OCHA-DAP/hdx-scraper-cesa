@@ -1,0 +1,49 @@
+{
+  "statusCode": 200,
+  "result": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            112.4636753254,
+            -7.7605714192
+          ]
+        },
+        "properties": {
+          "pkey": "356170",
+          "created_at": "2024-07-09T02:57:52.622Z",
+          "source": "grasp",
+          "status": "confirmed",
+          "url": "e11f5644-747d-49c6-9d29-017385e0f1c3",
+          "image_url": "https://images.petabencana.id/e11f5644-747d-49c6-9d29-017385e0f1c3.jpg",
+          "disaster_type": "volcano",
+          "is_training": true,
+          "report_data": {
+            "report_type": "volcano",
+            "volcanicSigns": [
+              2,
+              3,
+              4
+            ],
+            "evacuationNumber": 2,
+            "evacuationArea": false
+          },
+          "tags": {
+            "city": "MOJOKERTO",
+            "district_id": null,
+            "region_code": "3516",
+            "local_area_id": null,
+            "instance_region_code": "ID-JI"
+          },
+          "title": null,
+          "text": "",
+          "partner_code": null,
+          "partner_icon": null
+        }
+      }
+    ]
+  }
+}
