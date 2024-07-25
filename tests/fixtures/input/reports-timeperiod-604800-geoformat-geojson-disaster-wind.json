@@ -26,11 +26,11 @@
             "impact": 1
           },
           "tags": {
-            "city": "BENGKULU TENGAH",
+            "city": null,
             "district_id": null,
-            "region_code": "1709",
+            "region_code": null,
             "local_area_id": null,
-            "instance_region_code": "ID-BE"
+            "instance_region_code": null
           },
           "title": null,
           "text": "Min min ada angin kencang\ndi desa rena semanek\nkorban tidak ada\npohon tumbang",
