@@ -4,7 +4,8 @@ dataset_maintainer: "b682f6f7-cd7e-4bd4-8aa7-f74138dc6313" # Beryl
 dataset_organization: "a624903e-ff7c-4694-91c1-ef1ec0e0c692" # CESA
 dataset_expected_update_frequency: "Every day"
 dataset_notes: >
-  PetaBencana.id by the Climate Emergency Software Alliance (CESA)
+  [PetaBencana.id](https://docs.petabencana.id/v/master-1) by the
+  [Climate Emergency Software Alliance (CESA)](https://cesa.global/)
   is a free and transparent platform for emergency response and
   disaster management in megacities in South and Southeast Asia. The platform
   harnesses the heightened use of social media during emergency events to

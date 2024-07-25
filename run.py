@@ -25,8 +25,8 @@ _SAVED_DATA_DIR = "saved_data"  # Keep in repo to avoid deletion in /tmp
 
 
 def main(
-    save: bool = False,
-    use_saved: bool = True,
+    save: bool = True,
+    use_saved: bool = False,
 ) -> None:
     """Generate datasets and create them in HDX
 

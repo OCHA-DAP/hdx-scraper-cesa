@@ -1,8 +1,8 @@
 # TODO: Try and put this in .config
 # TODO: Fix this
-license_id: "hdx-other"
-license_other: "TBD"
-methodology: "Registry"
+license_id: "cc-by"
+methodology: "Other"
+methodology_other: "TBD"
 caveats: "None"
 dataset_source: "Climate Emergency Software Alliance"
 package_creator: "HDX Data Systems Team"

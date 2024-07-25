@@ -85,8 +85,7 @@ class Cesa:
             logger.info(
                 f"Found {len(data['features'])} rows for {disaster_type}"
             )
-            # TODO: any type of cleaning or pulling out properties?
-            data_by_disaster_dict[disaster_type] = data
+            data_by_disaster_dict[disaster_type] = _flatten_data(data)
         return data_by_disaster_dict
 
     def generate_dataset(
@@ -210,14 +209,14 @@ def get_list_of_country_iso2s(data_by_disaster_dict: dict) -> set:
     so we just loop through and check what the countries are."""
     country_iso2s = set()
     for data in data_by_disaster_dict.values():
-        for row in data["features"]:
+        for feature in data["features"]:
             try:
-                country_iso2 = row["properties"]["tags"][
-                    "instance_region_code"
-                ][:2]
+                country_iso2 = _get_instance_region_code_from_feature(feature)[
+                    :2
+                ]
             # Sometimes the instance_region_code is None
             except TypeError:
-                logger.warning(f"No country info for row: {row}")
+                logger.warning(f"No country info for row: {feature}")
                 continue
             country_iso2s.add(country_iso2)
     return country_iso2s
@@ -232,11 +231,10 @@ def filter_country(data_by_disaster_dict: dict, country_iso2: str) -> dict:
         filtered_features = [
             feature
             for feature in data["features"]
-            if feature["properties"]["tags"]["instance_region_code"]
-            is not None
-            and feature["properties"]["tags"][
-                "instance_region_code"
-            ].startswith(country_iso2)
+            if _get_instance_region_code_from_feature(feature) is not None
+            and _get_instance_region_code_from_feature(feature).startswith(
+                country_iso2
+            )
         ]
         # Put a copy of the original dictionary in the new one,
         # and then replace the features with the filtered ones
@@ -247,50 +245,58 @@ def filter_country(data_by_disaster_dict: dict, country_iso2: str) -> dict:
     return country_data_by_disaster_dict
 
 
-def _flatten_dict(d: dict) -> dict:
-    # TODO: not using for now but leaving here
-    """A very basic function to flatten a nested dictionary, does not deal
-    with any type of edge cases such as lists.
-    If keys are not unique throws an error.
+def _get_instance_region_code_from_feature(feature: dict) -> str:
+    # This is used a few times and can change depending on
+    # whether and how we modify the data dict
+    # If no modifications:
+    #  return feature["properties"]["tags"]["instance_region_code"]
+    return feature["properties"]["tags-instance_region_code"]
 
-    Example:
 
-    {
-        key1: "value1",
-        key2:
-        {
-            key3: "value3",
-            key4:
-            {
-                key5: "value5",
-                key6: "value6"
-            }
-        }
-    }
-
-    would be trandformed to:
-
-    {
-        key1: "value1",
-        key3: "value3",
-        key5: "value5",
-        key6: "value6"
-    }
-
+def _flatten_data(data: dict) -> dict:
     """
+    A single is a feature that looks like this:
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [106.8262732354, -6.1742133417]
+        },
+        "properties": {
+          "pkey": "357181",
+          "tags": {
+            "instance_region_code": "ID-JK"
+          },
+        }
+      }
+    This function flattens the "properties" dictionary, so it would look like:
+       {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [106.8262732354, -6.1742133417]
+        },
+        "properties": {
+          "pkey": "357181",
+          "tags-instance_region_code": "ID-JK":
+        }
+      }
+    """
+    for feature in data["features"]:
+        feature["properties"] = _flatten_dict(feature.pop("properties"))
+    return data
 
-    flat_dict = dict()
-    seen_keys = set()
 
-    def _flatten_dict_inner(dictionary):
+def _flatten_dict(d: dict, sep: str = "-") -> dict:
+    flat_dict = {}
+
+    def _flatten_dict_inner(dictionary, parent_key):
         for key, value in dictionary.items():
+            new_key = f"{parent_key}{sep}{key}" if parent_key else key
             if isinstance(value, dict):
-                _flatten_dict_inner(value)
+                _flatten_dict_inner(value, new_key)
             else:
-                if key in seen_keys:
-                    raise ValueError(f"Duplicate key found: {key}")
-                flat_dict[key] = value
-                seen_keys.add(key)
+                flat_dict[new_key] = value
 
-    _flatten_dict_inner(d)
+    _flatten_dict_inner(d, "")
     return flat_dict
