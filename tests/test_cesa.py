@@ -14,7 +14,7 @@ from hdx.utilities.useragent import UserAgent
 logger = logging.getLogger(__name__)
 
 
-@pytest.fixture
+@pytest.fixture(scope="module")
 def expected_earthquake() -> dict:
     return {
         "type": "FeatureCollection",
@@ -51,7 +51,7 @@ def expected_earthquake() -> dict:
     }
 
 
-@pytest.fixture
+@pytest.fixture(scope="module")
 def expected_dataset():
     return {
         "caveats": "None",
@@ -110,7 +110,7 @@ def expected_dataset():
     }
 
 
-@pytest.fixture
+@pytest.fixture(scope="module")
 def expected_resources():
     return [
         {

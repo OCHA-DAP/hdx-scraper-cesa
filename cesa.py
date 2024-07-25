@@ -45,13 +45,6 @@ class Cesa:
         self._temp_dir = temp_dir
         self._tags = self._create_tags()
 
-    def _create_tags(self) -> List[str]:
-        """Use disaster names to create tags"""
-        logger.info("Generating tags")
-        tags, _ = Vocabulary.get_mapped_tags(self._DISASTER_TYPE)
-        tags += self._configuration["fixed_tags"]
-        return tags
-
     def scrape_data(self) -> dict:
         """
         Query the API by disaster, and store the results in a dictionary.
@@ -160,6 +153,13 @@ class Cesa:
             dataset.add_update_resource(resource_shapefile)
         return dataset
 
+    def _create_tags(self) -> List[str]:
+        """Use disaster names to create tags"""
+        logger.info("Generating tags")
+        tags, _ = Vocabulary.get_mapped_tags(self._DISASTER_TYPE)
+        tags += self._configuration["fixed_tags"]
+        return tags
+
     def _create_geojson_resource(
         self, gdf: gpd.GeoDataFrame, basename: str, resource_description: str
     ) -> Resource:
@@ -245,17 +245,10 @@ def filter_country(data_by_disaster_dict: dict, country_iso2: str) -> dict:
     return country_data_by_disaster_dict
 
 
-def _get_instance_region_code_from_feature(feature: dict) -> str:
-    # This is used a few times and can change depending on
-    # whether and how we modify the data dict
-    # If no modifications:
-    #  return feature["properties"]["tags"]["instance_region_code"]
-    return feature["properties"]["tags-instance_region_code"]
-
-
 def _flatten_data(data: dict) -> dict:
     """
-    A single is a feature that looks like this:
+    The data contains a list of features, where a
+    single feature looks like this:
       {
         "type": "Feature",
         "geometry": {
@@ -288,6 +281,26 @@ def _flatten_data(data: dict) -> dict:
 
 
 def _flatten_dict(d: dict, sep: str = "-") -> dict:
+    """
+    Takes a dictionary and flattens out any nested dictionaries,
+    stringing together the keys. Does not handle duplicates or lists.
+    For example, passing in:
+    my_dict = {
+        key1: 1,
+        key2: {
+            key3: 3,
+            key4: {
+                key5: 5
+            }
+        }
+    }
+    this function would return:
+    {
+        key1: 1,
+        key2-key3: 3,
+        key2-key4-key5: 5
+    }
+    """
     flat_dict = {}
 
     def _flatten_dict_inner(dictionary, parent_key):
@@ -300,3 +313,11 @@ def _flatten_dict(d: dict, sep: str = "-") -> dict:
 
     _flatten_dict_inner(d, "")
     return flat_dict
+
+
+def _get_instance_region_code_from_feature(feature: dict) -> str:
+    # This is used a few times and can change depending on
+    # whether and how we modify the data dict
+    # If no modifications:
+    #  return feature["properties"]["tags"]["instance_region_code"]
+    return feature["properties"]["tags-instance_region_code"]
