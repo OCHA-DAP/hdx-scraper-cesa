@@ -89,14 +89,11 @@ class Cesa:
         has been pre-filtered for the country in question.
         """
         # Setup the dataset information
-        # TODO: handle other countries
         country_iso3 = Country.get_iso3_from_iso2(country_iso2)
         country_name = Country.get_country_name_from_iso2(country_iso2)
 
         title = f"{country_name}: CESA Disaster Reports"
-        slugified_name = slugify(
-            f"CESA Disaster Reports for {country_iso3}"
-        ).lower()
+        slugified_name = slugify(f"CESA Disaster Reports for {country_iso3}")
 
         logger.info(f"Creating dataset: {title}")
 
@@ -104,7 +101,6 @@ class Cesa:
         dataset = Dataset(
             {
                 "name": slugified_name,
-                "notes": self._configuration["dataset_notes"],
                 "title": title,
             }
         )
@@ -113,12 +109,6 @@ class Cesa:
             startdate=now - timedelta(seconds=self._TIMEPERIOD), enddate=now
         )
         dataset.add_tags(self._tags)
-        dataset.set_maintainer(self._configuration["dataset_maintainer"])
-        dataset.set_organization(self._configuration["dataset_organization"])
-        dataset.set_expected_update_frequency(
-            self._configuration["dataset_expected_update_frequency"]
-        )
-        dataset.set_subnational(True)
         try:
             dataset.add_country_location(country_iso3)
         except HDXError:
@@ -134,7 +124,7 @@ class Cesa:
             # Create pandas dataframe from the data
             gdf = gpd.GeoDataFrame.from_features(data)
             # Filename base for geojson and shapefiles
-            basename = f"{disaster_type}_reports_{country_iso3.lower()}"
+            basename = f"{disaster_type}_reports_{country_iso3}"
             resource_description = (
                 f"All current {disaster_type} reports for {country_name}"
             )

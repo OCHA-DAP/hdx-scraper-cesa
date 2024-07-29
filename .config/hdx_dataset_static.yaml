@@ -1,9 +1,29 @@
-# TODO: Try and put this in .config
-# TODO: Fix this
 license_id: "cc-by"
 methodology: "Other"
 methodology_other: "TBD"
 caveats: "None"
-dataset_source: "Climate Emergency Software Alliance"
+dataset_source: "The Climate Emergency Software Alliance"
 package_creator: "HDX Data Systems Team"
-private: False  # has to be True or False
+private: False
+maintainer: "b682f6f7-cd7e-4bd4-8aa7-f74138dc6313" # Beryl
+owner_org: "a624903e-ff7c-4694-91c1-ef1ec0e0c692" # CESA
+subnational: True
+data_update_frequency: 1 #  Daily
+notes: >
+  [PetaBencana.id](https://docs.petabencana.id/v/master-1) by the
+  [Climate Emergency Software Alliance (CESA)](https://cesa.global/)
+  is a free and transparent platform for emergency response and
+  disaster management in megacities in South and Southeast Asia. The platform
+  harnesses the heightened use of social media during emergency events to
+  gather, sort, and display confirmed hazard information in real-time.
+
+  The platform adopts a “people are the best sensors” paradigm, where confirmed
+  reports are collected directly from the users at street level in a manner
+  that removes expensive and time-consuming data processing. This framework
+  creates accurate, real-time data which is immediately made available for
+  users and first responders.
+
+  PetaBencana.id gathers, sorts, and visualizes data using specially developed
+  CogniCity Open Source Software, to transform the noise of social and digital
+  media into critical information for residents, communities, and government
+  agencies.
