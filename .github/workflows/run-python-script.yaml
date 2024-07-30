@@ -21,6 +21,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        pip install .
     - name: Run script
       env:
         HDX_SITE: ${{ vars.HDX_SITE }}
@@ -29,7 +30,7 @@ jobs:
         USER_AGENT: ${{ vars.USER_AGENT }}
         EXTRA_PARAMS: ${{ vars.EXTRA_PARAMS }}
       run: |
-        python run.py
+        python -m hdx.scraper.cesa
     - name: Send mail
       if: failure()
       uses: dawidd6/action-send-mail@v3
