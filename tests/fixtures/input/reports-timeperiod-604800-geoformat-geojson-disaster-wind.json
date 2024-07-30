@@ -1,0 +1,148 @@
+{
+  "statusCode": 200,
+  "result": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            102.4062041858,
+            -3.6997497663
+          ]
+        },
+        "properties": {
+          "pkey": "356173",
+          "created_at": "2024-07-11T02:07:28.411Z",
+          "source": "grasp",
+          "status": "confirmed",
+          "url": "1d5fd783-5627-45fd-8fcd-fcb6e20d1d34",
+          "image_url": "https://images.petabencana.id/1d5fd783-5627-45fd-8fcd-fcb6e20d1d34.jpg",
+          "disaster_type": "wind",
+          "is_training": true,
+          "report_data": {
+            "report_type": "wind",
+            "impact": 1
+          },
+          "tags": {
+            "city": null,
+            "district_id": null,
+            "region_code": null,
+            "local_area_id": null,
+            "instance_region_code": null
+          },
+          "title": null,
+          "text": "Min min ada angin kencang\ndi desa rena semanek\nkorban tidak ada\npohon tumbang",
+          "partner_code": null,
+          "partner_icon": null
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            110.6036130802,
+            0.1436697356
+          ]
+        },
+        "properties": {
+          "pkey": "356169",
+          "created_at": "2024-07-08T08:52:33.293Z",
+          "source": "grasp",
+          "status": "confirmed",
+          "url": "6c764d89-2f62-4533-a09b-4660ecd1f6b0",
+          "image_url": "https://images.petabencana.id/6c764d89-2f62-4533-a09b-4660ecd1f6b0.jpg",
+          "disaster_type": "wind",
+          "is_training": true,
+          "report_data": {
+            "report_type": "wind",
+            "impact": 1
+          },
+          "tags": {
+            "city": "SANGGAU",
+            "district_id": null,
+            "region_code": "6103",
+            "local_area_id": null,
+            "instance_region_code": "ID-KB"
+          },
+          "title": null,
+          "text": "BPBD KAB SANGGAU BAGUS PAMUNGKAS",
+          "partner_code": null,
+          "partner_icon": null
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            106.7665175555,
+            -6.7661793526
+          ]
+        },
+        "properties": {
+          "pkey": "356166",
+          "created_at": "2024-07-06T07:05:47.503Z",
+          "source": "grasp",
+          "status": "confirmed",
+          "url": "1363ca16-8b17-401a-8718-3918d553a39b",
+          "image_url": "https://images.petabencana.id/1363ca16-8b17-401a-8718-3918d553a39b.jpg",
+          "disaster_type": "wind",
+          "is_training": false,
+          "report_data": {
+            "report_type": "wind",
+            "impact": 0
+          },
+          "tags": {
+            "city": "SUKABUMI",
+            "district_id": null,
+            "region_code": "3202",
+            "local_area_id": null,
+            "instance_region_code": "ID-JB"
+          },
+          "title": null,
+          "text": "Hujan deras disertai angin kencang di wilayah kec. Cicurug, Kab. Sukabumi. Dihimbau untuk selalu hati-hati dan waspada",
+          "partner_code": null,
+          "partner_icon": null
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            106.8274263032,
+            -6.1733524595
+          ]
+        },
+        "properties": {
+          "pkey": "356156",
+          "created_at": "2024-07-05T01:52:41.106Z",
+          "source": "grasp",
+          "status": "confirmed",
+          "url": "29d90640-d75b-491c-9125-221e916c2a1e",
+          "image_url": "https://images.petabencana.id/29d90640-d75b-491c-9125-221e916c2a1e.jpg",
+          "disaster_type": "wind",
+          "is_training": false,
+          "report_data": {
+            "report_type": "wind",
+            "impact": 1
+          },
+          "tags": {
+            "city": "JAKARTA PUSAT",
+            "district_id": null,
+            "region_code": "3171",
+            "local_area_id": "11017",
+            "instance_region_code": "ID-JK"
+          },
+          "title": null,
+          "text": "Telah terjadi pohon tumbang di jln Denpasar-Gilimanuk tepatnya di Candikusuma, Kecamatan Melaya, saat ini TRC sudah melakukan kajian cepat",
+          "partner_code": null,
+          "partner_icon": null
+        }
+      }
+    ]
+  }
+}

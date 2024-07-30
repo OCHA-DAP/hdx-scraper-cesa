@@ -1,0 +1,43 @@
+{
+  "statusCode": 200,
+  "result": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            109.7295242896,
+            -6.9075571037
+          ]
+        },
+        "properties": {
+          "pkey": "356171",
+          "created_at": "2024-07-09T11:18:53.883Z",
+          "source": "grasp",
+          "status": "confirmed",
+          "url": "2487ecf2-494d-4cb8-95e8-dfcb5505e63c",
+          "image_url": "https://images.petabencana.id/2487ecf2-494d-4cb8-95e8-dfcb5505e63c.jpg",
+          "disaster_type": "earthquake",
+          "is_training": false,
+          "report_data": {
+            "report_type": "structure",
+            "structureFailure": 1
+          },
+          "tags": {
+            "city": "BATANG",
+            "district_id": null,
+            "region_code": "3325",
+            "local_area_id": null,
+            "instance_region_code": "ID-JT"
+          },
+          "title": null,
+          "text": "Masjid Agung Darul Muttaqin Batang rusak sebagian akibat gempa",
+          "partner_code": null,
+          "partner_icon": null
+        }
+      }
+    ]
+  }
+}
