@@ -1,4 +1,4 @@
 # Collector specific configuration
 base_url: "https://api.petabencana.id/reports"
 fixed_tags:
-  - affected people
+  - affected population

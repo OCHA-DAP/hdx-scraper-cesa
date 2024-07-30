@@ -2,6 +2,7 @@ import logging
 from os.path import join
 
 import pytest
+from freezegun import freeze_time
 
 from hdx.api.configuration import Configuration
 from hdx.scraper.cesa.cesa import (
@@ -96,14 +97,6 @@ def expected_dataset():
                 "vocabulary_id": "b891512e-9516-4bf5-962a-7a289772a2a1",
             },
             {
-                "name": "climate hazards",
-                "vocabulary_id": "b891512e-9516-4bf5-962a-7a289772a2a1",
-            },
-            {
-                "name": "natural disasters",
-                "vocabulary_id": "b891512e-9516-4bf5-962a-7a289772a2a1",
-            },
-            {
                 "name": "affected population",
                 "vocabulary_id": "b891512e-9516-4bf5-962a-7a289772a2a1",
             },
@@ -160,6 +153,14 @@ def expected_resources():
     ]
 
 
+@pytest.fixture
+def mock_get_mapped_tags(mocker):
+    return mocker.patch(
+        "hdx.data.vocabulary.Vocabulary.get_mapped_tags",
+        return_value=(["flooding-storm surge", "earthquake-tsunami"], []),
+    )
+
+
 class TestCESA:
     @pytest.fixture(scope="class")
     def configuration(self, config_dir):
@@ -183,6 +184,7 @@ class TestCESA:
     def config_dir(self, fixtures_dir):
         return join("src", "hdx", "scraper", "cesa", "config")
 
+    @freeze_time("2024-07-30")
     def test_cesa(
         self,
         configuration,
@@ -192,6 +194,7 @@ class TestCESA:
         expected_earthquake,
         expected_dataset,
         expected_resources,
+        mock_get_mapped_tags,
     ):
         with temp_dir(
             "TestCESA",

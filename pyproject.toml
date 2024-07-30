@@ -21,8 +21,10 @@ dynamic = ["version"]
 
 [project.optional-dependencies]
 test = [
+  "freezegun",
   "pytest",
-  "pytest-cov"
+  "pytest-cov",
+  "pytest-mock"
 ]
 dev = ["pre-commit"]
 

@@ -68,6 +68,8 @@ et-xmlfile==1.1.0
     # via
     #   -c requirements.txt
     #   openpyxl
+freezegun==1.5.1
+    # via hdx-scraper-cesa (pyproject.toml)
 frictionless==5.17.0
     # via
     #   -c requirements.txt
@@ -254,11 +256,15 @@ pytest==8.3.2
     # via
     #   hdx-scraper-cesa (pyproject.toml)
     #   pytest-cov
+    #   pytest-mock
 pytest-cov==5.0.0
+    # via hdx-scraper-cesa (pyproject.toml)
+pytest-mock==3.14.0
     # via hdx-scraper-cesa (pyproject.toml)
 python-dateutil==2.9.0.post0
     # via
     #   -c requirements.txt
+    #   freezegun
     #   frictionless
     #   hdx-python-utilities
     #   libhxl

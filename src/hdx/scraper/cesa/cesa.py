@@ -1,12 +1,3 @@
-#!/usr/bin/python
-"""
-WHO:
-------------
-
-Reads WHO API and creates datasets
-
-"""
-
 import logging
 import zipfile
 from copy import deepcopy
