@@ -55,14 +55,13 @@ def expected_earthquake() -> dict:
 def expected_dataset():
     return {
         "caveats": "None",
-        "data_update_frequency": "1",
-        "dataset_date": "[2024-07-18T00:00:00 TO 2024-07-25T23:59:59]",
-        "dataset_source": "Climate Emergency Software Alliance",
+        "data_update_frequency": 1,
+        "dataset_date": "[2024-07-23T00:00:00 TO 2024-07-30T23:59:59]",
+        "dataset_source": "The Climate Emergency Software Alliance",
         "groups": [{"name": "idn"}],
         "license_id": "cc-by",
         "maintainer": "b682f6f7-cd7e-4bd4-8aa7-f74138dc6313",
-        "methodology": "Other",
-        "methodology_other": "TBD",
+        "methodology": "Direct Observational Data/Anecdotal Data",
         "name": "cesa-disaster-reports-for-idn",
         "notes": "[PetaBencana.id](https://docs.petabencana.id/v/master-1) by the "
         "[Climate Emergency Software Alliance (CESA)](https://cesa.global/) "
@@ -83,7 +82,7 @@ def expected_dataset():
         "owner_org": "a624903e-ff7c-4694-91c1-ef1ec0e0c692",
         "package_creator": "HDX Data Systems Team",
         "private": False,
-        "subnational": "1",
+        "subnational": True,
         "tags": [
             {
                 "name": "flooding-storm surge",

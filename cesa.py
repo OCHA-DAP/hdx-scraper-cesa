@@ -124,7 +124,7 @@ class Cesa:
             # Create pandas dataframe from the data
             gdf = gpd.GeoDataFrame.from_features(data)
             # Filename base for geojson and shapefiles
-            basename = f"{disaster_type}_reports_{country_iso3}"
+            basename = f"{disaster_type}_reports_{country_iso3.lower()}"
             resource_description = (
                 f"All current {disaster_type} reports for {country_name}"
             )

@@ -70,7 +70,7 @@ def main(
                     country_iso2=country_iso2,
                 )
                 dataset.update_from_yaml(
-                    path=".config/hdx_dataset_static.yaml"
+                    path=join(".config", "hdx_dataset_static.yaml")
                 )
                 logger.info("Uploading to HDX")
                 dataset.create_in_hdx(

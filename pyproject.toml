@@ -25,35 +25,24 @@ test = [
   "pytest-cov"
 ]
 
-# Dynamic versioning using hatch-vcs
 [tool.hatch.version]
 source = "vcs"
 
-# Tests
+[tool.hatch.envs.hatch-test]
+features = ["test"]
 
-[tool.hatch.envs.test]
-dependencies = ["hdx-scraper-cesa[test]"]
+[[tool.hatch.envs.hatch-test.matrix]]
+python = ["3.12"]
 
-[tool.hatch.envs.test.scripts]
-test = """
+[tool.hatch.envs.hatch-test.scripts]
+run = """
        pytest -c .config/pytest.ini --rootdir=. --junitxml=test-results.xml \
-       --cov=. --cov-config=.config/coveragerc --no-cov-on-fail \
+       --cov --cov-config=.config/coveragerc --no-cov-on-fail \
        --cov-report=lcov --cov-report=term-missing
        """
 
-[[tool.hatch.envs.test.matrix]]
-python = ["3.12"]
-
-[tool.hatch.envs.lint]
-detached = true
-dependencies = ["ruff"]
-
-[tool.hatch.envs.lint.scripts]
-style = [
-  "ruff check --config .config/ruff.toml --diff {args:.}",
-  "ruff format --config .config/ruff.toml --diff {args:.}",
-]
-
-# Needed for test build
-[tool.hatch.build.targets.wheel]
-include = ["cesa.py"]
+[tool.hatch.envs.hatch-static-analysis.scripts]
+format-check = ["ruff format --config .config/ruff.toml --check --diff {args:.}",]
+format-fix = ["ruff format --config .config/ruff.toml {args:.}",]
+lint-check = ["ruff check --config .config/ruff.toml {args:.}",]
+lint-fix = ["ruff check --config .config/ruff.toml --fix {args:.}",]
