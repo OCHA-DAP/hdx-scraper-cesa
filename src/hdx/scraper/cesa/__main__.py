@@ -33,7 +33,7 @@ _UPDATED_BY_SCRIPT = "HDX Scraper: CESA"
 
 def main(
     save: bool = False,
-    use_saved: bool = True,
+    use_saved: bool = False,
 ) -> None:
     """Generate datasets and create them in HDX
 
