@@ -3,9 +3,12 @@ from os.path import join
 
 import pytest
 
-from cesa import Cesa, filter_country, get_list_of_country_iso2s
-
 from hdx.api.configuration import Configuration
+from hdx.scraper.cesa.cesa import (
+    Cesa,
+    filter_country,
+    get_list_of_country_iso2s,
+)
 from hdx.utilities.downloader import Download
 from hdx.utilities.path import temp_dir
 from hdx.utilities.retriever import Retrieve
@@ -158,13 +161,13 @@ def expected_resources():
 
 
 class TestCESA:
-    @pytest.fixture(scope="function")
-    def configuration(self):
+    @pytest.fixture(scope="class")
+    def configuration(self, config_dir):
         UserAgent.set_global("test")
         Configuration._create(
             hdx_read_only=True,
             hdx_site="prod",
-            project_config_yaml=join(".config", "project_configuration.yaml"),
+            project_config_yaml=join(config_dir, "project_configuration.yaml"),
         )
         return Configuration.read()
 
@@ -176,11 +179,16 @@ class TestCESA:
     def input_dir(self, fixtures_dir):
         return join(fixtures_dir, "input")
 
+    @pytest.fixture(scope="class")
+    def config_dir(self, fixtures_dir):
+        return join("src", "hdx", "scraper", "cesa", "config")
+
     def test_cesa(
         self,
         configuration,
         fixtures_dir,
         input_dir,
+        config_dir,
         expected_earthquake,
         expected_dataset,
         expected_resources,
@@ -246,7 +254,7 @@ class TestCESA:
                         country_iso2=country_iso2,
                     )
                     dataset.update_from_yaml(
-                        path=".config/hdx_dataset_static.yaml"
+                        path=join(config_dir, "hdx_dataset_static.yaml")
                     )
                     assert dataset == expected_dataset
                     resources = dataset.get_resources()

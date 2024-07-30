@@ -161,5 +161,10 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 .idea/
 
+## Project
+
 # Saved data for this project
 saved_data/
+
+# Version file
+src/hdx/scraper/cesa/_version.py

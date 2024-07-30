@@ -9,9 +9,23 @@ to obtain the
 [crowdsourced disaster reports](https://docs.petabencana.id/v/master-1/routes/crowdsourced-reports)
 for the past week and upload them to HDX.
 
-### Usage
+## Development
 
-    python run.py
+### Environment
+
+Development is currently done using Python 3.12. We recommend using a virtual
+environment such as ``venv``:
+
+    python3.12 -m venv venv
+    source venv/bin/activate
+
+In your virtual environment, please install all packages for
+development by running:
+
+    pip install -r requirements.txt
+
+### Installing and running
+
 
 For the script to run, you will need to have a file called
 .hdx_configuration.yaml in your home directory containing your HDX key, e.g.:
@@ -28,7 +42,15 @@ For the script to run, you will need to have a file called
  Alternatively, you can set up environment variables: `USER_AGENT`, `HDX_KEY`,
 `HDX_SITE`, `EXTRA_PARAMS`, `TEMP_DIR`, and `LOG_FILE_ONLY`.
 
-## Development
+To install and run, execute:
+
+## Environment
+
+Development is currently done using Python 3.11. We recommend using a virtual
+environment such as ``venv``:
+
+    python3.11 -m venv venv
+    source venv/bin/activate
 
 ### Pre-commit
 
@@ -55,7 +77,7 @@ To check if your changes pass pre-commit without committing, run:
 
     pre-commit run --all-files --config=.config/pre-commit-config.yaml
 
-## Testing
+### Testing
 
 Ensure you have the required packages to run the tests:
 
@@ -63,9 +85,9 @@ Ensure you have the required packages to run the tests:
 
 To run the tests and view coverage, execute:
 
-    pytest -c .config/pytest.ini --cov=. --cov-config .config/coveragerc
-
-## Packages
+`    pytest -c .config/pytest.ini --cov hdx --cov-config .config/coveragerc
+`
+### Packages
 
 [pip-tools](https://github.com/jazzband/pip-tools) is used for
 package management.  If you’ve introduced a new package to the
