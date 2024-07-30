@@ -10,6 +10,7 @@ from hdx.scraper.cesa.cesa import (
     filter_country,
     get_list_of_country_iso2s,
 )
+from hdx.utilities.compare import assert_files_same
 from hdx.utilities.downloader import Download
 from hdx.utilities.path import temp_dir
 from hdx.utilities.retriever import Retrieve
@@ -262,3 +263,14 @@ class TestCESA:
                     assert dataset == expected_dataset
                     resources = dataset.get_resources()
                     assert resources == expected_resources
+                    # TODO: tests for shapefiles, if partners want to keep them
+                    filename_list = [
+                        "earthquake_reports_idn.geojson",
+                        "volcano_reports_idn.geojson",
+                        "wind_reports_idn.geojson",
+                    ]
+                    for filename in filename_list:
+                        assert_files_same(
+                            join("tests", "fixtures", filename),
+                            join(tempdir, filename),
+                        )
