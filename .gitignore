@@ -167,4 +167,4 @@ cython_debug/
 saved_data/
 
 # Version file
-src/hdx/scraper/cesa/_version.py
+**/_version.py
