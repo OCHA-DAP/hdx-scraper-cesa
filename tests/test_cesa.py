@@ -3,18 +3,18 @@ from os.path import join
 
 import pytest
 from freezegun import freeze_time
-
 from hdx.api.configuration import Configuration
-from hdx.scraper.cesa.cesa import (
-    Cesa,
-    filter_country,
-    get_list_of_country_iso2s,
-)
 from hdx.utilities.compare import assert_files_same
 from hdx.utilities.downloader import Download
 from hdx.utilities.path import temp_dir
 from hdx.utilities.retriever import Retrieve
 from hdx.utilities.useragent import UserAgent
+
+from hdx.scraper.cesa.cesa import (
+    Cesa,
+    filter_country,
+    get_list_of_country_iso2s,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -47,7 +47,8 @@ def expected_earthquake() -> dict:
                     "tags-local_area_id": None,
                     "tags-instance_region_code": "ID-JT",
                     "title": None,
-                    "text": "Masjid Agung Darul Muttaqin Batang rusak sebagian akibat gempa",
+                    "text": "Masjid Agung Darul Muttaqin Batang rusak sebagian akibat "
+                    "gempa",
                     "partner_code": None,
                     "partner_icon": None,
                 },
@@ -226,15 +227,11 @@ class TestCESA:
                     "volcano",
                 ]
                 # Check lengths are as expected
-                assert (
-                    len(data_by_disaster_dict["earthquake"]["features"]) == 1
-                )
+                assert len(data_by_disaster_dict["earthquake"]["features"]) == 1
                 assert len(data_by_disaster_dict["wind"]["features"]) == 4
                 assert len(data_by_disaster_dict["volcano"]["features"]) == 1
                 # Check that the data is flattened
-                assert (
-                    data_by_disaster_dict["earthquake"] == expected_earthquake
-                )
+                assert data_by_disaster_dict["earthquake"] == expected_earthquake
                 country_iso2s = get_list_of_country_iso2s(
                     data_by_disaster_dict=data_by_disaster_dict
                 )
@@ -249,10 +246,7 @@ class TestCESA:
                     )
                     # Wind data has one point with null location information, this should
                     # have been removed
-                    assert (
-                        len(country_data_by_disaster_dict["wind"]["features"])
-                        == 3
-                    )
+                    assert len(country_data_by_disaster_dict["wind"]["features"]) == 3
                     dataset = cesa.generate_dataset(
                         country_data_by_disaster_dict=country_data_by_disaster_dict,
                         country_iso2=country_iso2,

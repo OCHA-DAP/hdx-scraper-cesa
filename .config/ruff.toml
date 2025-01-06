@@ -1,4 +1,4 @@
-line-length = 79
+line-length = 90
 exclude = ["_version.py"]
 
 [lint]
@@ -8,3 +8,7 @@ select = [
   "F",   # pyflakes - default
   "I"    # isort
 ]
+
+[lint.isort]
+known-local-folder = ["hdx.scraper.cesa"]
+known-third-party = ["hdx.api", "hdx.location", "hdx.data", "hdx.database", "hdx.facades", "hdx.scraper", "hdx.utilities"]

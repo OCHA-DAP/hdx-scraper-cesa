@@ -8,12 +8,6 @@ script then creates in HDX.
 import logging
 from os.path import dirname, expanduser, join
 
-from src.hdx.scraper.cesa.cesa import (
-    Cesa,
-    filter_country,
-    get_list_of_country_iso2s,
-)
-
 from hdx.api.configuration import Configuration
 from hdx.facades.infer_arguments import facade
 from hdx.utilities.downloader import Download
@@ -22,6 +16,12 @@ from hdx.utilities.path import (
     wheretostart_tempdir_batch,
 )
 from hdx.utilities.retriever import Retrieve
+
+from src.hdx.scraper.cesa.cesa import (
+    Cesa,
+    filter_country,
+    get_list_of_country_iso2s,
+)
 
 setup_logging()
 logger = logging.getLogger(__name__)
@@ -77,9 +77,7 @@ def main(
                     country_iso2=country_iso2,
                 )
                 dataset.update_from_yaml(
-                    path=join(
-                        dirname(__file__), "config", "hdx_dataset_static.yaml"
-                    )
+                    path=join(dirname(__file__), "config", "hdx_dataset_static.yaml")
                 )
                 logger.info("Uploading to HDX")
                 dataset.create_in_hdx(

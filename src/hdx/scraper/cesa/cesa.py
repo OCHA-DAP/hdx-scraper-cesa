@@ -6,8 +6,6 @@ from pathlib import Path
 from typing import List, Optional
 
 import geopandas as gpd
-from slugify import slugify
-
 from hdx.api.configuration import Configuration
 from hdx.data.dataset import Dataset
 from hdx.data.hdxobject import HDXError
@@ -15,6 +13,7 @@ from hdx.data.resource import Resource
 from hdx.data.vocabulary import Vocabulary
 from hdx.location.country import Country
 from hdx.utilities.retriever import Retrieve
+from slugify import slugify
 
 logger = logging.getLogger(__name__)
 
@@ -28,9 +27,7 @@ class Cesa:
     # CESA asks that we provide a user agent
     _REQUEST_HEADERS = {"User-Agent": "hdx-scraper-cesa"}
 
-    def __init__(
-        self, configuration: Configuration, retriever: Retrieve, temp_dir: str
-    ):
+    def __init__(self, configuration: Configuration, retriever: Retrieve, temp_dir: str):
         self._configuration = configuration
         self._retriever = retriever
         self._temp_dir = temp_dir
@@ -66,9 +63,7 @@ class Cesa:
             if not data["features"]:
                 logger.info(f"No data for {disaster_type}")
                 continue
-            logger.info(
-                f"Found {len(data['features'])} rows for {disaster_type}"
-            )
+            logger.info(f"Found {len(data['features'])} rows for {disaster_type}")
             data_by_disaster_dict[disaster_type] = _flatten_data(data)
         return data_by_disaster_dict
 
@@ -147,9 +142,7 @@ class Cesa:
         filename = f"{basename}.geojson"
         filepath = f"{self._temp_dir}/{filename}"
         gdf.to_file(filepath, driver="GeoJSON")
-        resource = Resource(
-            {"name": filename, "description": resource_description}
-        )
+        resource = Resource({"name": filename, "description": resource_description})
         resource.set_format("geojson")
         resource.set_file_to_upload(filepath)
         return resource
@@ -176,9 +169,7 @@ class Cesa:
         with zipfile.ZipFile(filepath_zip, "w") as zipf:
             for file in files_to_zip:
                 zipf.write(file, file.name)
-        resource = Resource(
-            {"name": filename_zip, "description": resource_description}
-        )
+        resource = Resource({"name": filename_zip, "description": resource_description})
         resource.set_format("SHP")
         resource.set_file_to_upload(str(filepath_zip))
         return resource
@@ -192,9 +183,7 @@ def get_list_of_country_iso2s(data_by_disaster_dict: dict) -> set:
     for data in data_by_disaster_dict.values():
         for feature in data["features"]:
             try:
-                country_iso2 = _get_instance_region_code_from_feature(feature)[
-                    :2
-                ]
+                country_iso2 = _get_instance_region_code_from_feature(feature)[:2]
             # Sometimes the instance_region_code is None
             except TypeError:
                 logger.warning(f"No country info for row: {feature}")
@@ -213,16 +202,12 @@ def filter_country(data_by_disaster_dict: dict, country_iso2: str) -> dict:
             feature
             for feature in data["features"]
             if _get_instance_region_code_from_feature(feature) is not None
-            and _get_instance_region_code_from_feature(feature).startswith(
-                country_iso2
-            )
+            and _get_instance_region_code_from_feature(feature).startswith(country_iso2)
         ]
         # Put a copy of the original dictionary in the new one,
         # and then replace the features with the filtered ones
         country_data_by_disaster_dict[disaster_type] = deepcopy(data)
-        country_data_by_disaster_dict[disaster_type]["features"] = (
-            filtered_features
-        )
+        country_data_by_disaster_dict[disaster_type]["features"] = filtered_features
     return country_data_by_disaster_dict
 
 
