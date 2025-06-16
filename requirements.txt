@@ -43,7 +43,7 @@ frictionless==5.17.0
     # via hdx-python-utilities
 geopandas==1.0.1
     # via hdx-scraper-cesa (pyproject.toml)
-hdx-python-api==6.3.2
+hdx-python-api==6.4.5
     # via hdx-scraper-cesa (pyproject.toml)
 hdx-python-country==3.7.7
     # via
