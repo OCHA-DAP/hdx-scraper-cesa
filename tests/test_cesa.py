@@ -114,43 +114,31 @@ def expected_resources():
             "description": "All current earthquake reports for Indonesia",
             "format": "geojson",
             "name": "earthquake_reports_idn.geojson",
-            "resource_type": "file.upload",
-            "url_type": "upload",
         },
         {
             "description": "All current earthquake reports for Indonesia",
             "format": "shp",
             "name": "earthquake_reports_idn.shp.zip",
-            "resource_type": "file.upload",
-            "url_type": "upload",
         },
         {
             "description": "All current wind reports for Indonesia",
             "format": "geojson",
             "name": "wind_reports_idn.geojson",
-            "resource_type": "file.upload",
-            "url_type": "upload",
         },
         {
             "description": "All current wind reports for Indonesia",
             "format": "shp",
             "name": "wind_reports_idn.shp.zip",
-            "resource_type": "file.upload",
-            "url_type": "upload",
         },
         {
             "description": "All current volcano reports for Indonesia",
             "format": "geojson",
             "name": "volcano_reports_idn.geojson",
-            "resource_type": "file.upload",
-            "url_type": "upload",
         },
         {
             "description": "All current volcano reports for Indonesia",
             "format": "shp",
             "name": "volcano_reports_idn.shp.zip",
-            "resource_type": "file.upload",
-            "url_type": "upload",
         },
     ]
 
